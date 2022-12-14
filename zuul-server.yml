@@ -12,3 +12,8 @@ zuul:
         url: sample-service #which url the request will e mapped to
         stripPrefix: false  #if zuul should replace the "/sample/" segment
         sensitiveHeaders:
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761
