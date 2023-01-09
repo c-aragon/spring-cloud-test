@@ -1,18 +1,6 @@
 server:
   port: 8762 #the default port used for zuul service
   
-zuul:
-  ignoredServices: '*'
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
-    routes:
-      sample-service: # Service to create as sample
-        path: /sample/** #path that will be intercepted
-        url: sample-service #which url the request will e mapped to
-        stripPrefix: false  #if zuul should replace the "/sample/" segment
-        sensitiveHeaders:
-        
 eureka:
   client:
     serviceUrl:
@@ -22,3 +10,12 @@ eureka:
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: orderService
+        uri: lb://ORDER-SERVICE
+        predicates:
+        - Path=/orderService/**
