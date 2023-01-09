@@ -16,6 +16,6 @@ spring:
     gateway:
       routes:
       - id: orderService
-        uri: lb://ORDER-SERVICE
+        uri: lb://ECHO-SERVICE
         predicates:
         - Path=/orderService/**
